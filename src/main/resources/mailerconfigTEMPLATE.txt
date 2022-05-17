@@ -1,0 +1,5 @@
+smtp.host.com
+587
+sender@host.com
+password
+name

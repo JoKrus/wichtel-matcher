@@ -39,3 +39,8 @@ build/
 
 ### git tool box
 git_toolbox_prj.xml
+
+### My config files ###
+participants.txt
+participantsTEST*.txt
+mailerconfig.txt
