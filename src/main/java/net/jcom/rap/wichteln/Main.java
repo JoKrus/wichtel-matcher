@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,18 +16,14 @@ public class Main {
         var participants = participantsString.stream().map(s -> {
             var split = s.split(";");
             return new Participant(split[0], split[1]);
-        }).toList();
+        }).collect(Collectors.toCollection(ArrayList::new));
 
-        var opponents = new ArrayList<>(participants);
-
-        do {
-            Collections.shuffle(opponents);
-        } while (checkSelfOpponent(participants, opponents));
+        Collections.shuffle(participants);
 
         var pairList = new ArrayList<Pair<Participant, Participant>>();
 
         for (int i = 0; i < participants.size(); ++i) {
-            pairList.add(Pair.of(participants.get(i), opponents.get(i)));
+            pairList.add(Pair.of(participants.get(i), participants.get((i + 1) % participants.size())));
         }
 
         outputStrategy.writeOutput(pairList);

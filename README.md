@@ -93,8 +93,8 @@ It consists of 5 lines.
 
 - [x] Custom list of participants
 - [x] Customizable sender
+- [x] Improve matchmaking
 - [ ] Customizable message
-- [ ] Improve matchmaking
 
 See the [open issues](https://github.com/JoKrus/wichtel-matcher/issues) for a full list of proposed features (and known
 issues).
