@@ -3,14 +3,15 @@ package net.jcom.rap.wichteln;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.nio.charset.Charset;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
         OutputStrategy outputStrategy = new ConsoleOutput();
+        SecureRandom random = new SecureRandom();
 
         var participantsString = ResourceLoader.readResourceAsList("participants.txt", Charset.defaultCharset());
         var participants = participantsString.stream().map(s -> {
@@ -18,7 +19,7 @@ public class Main {
             return new Participant(split[0], split[1]);
         }).collect(Collectors.toCollection(ArrayList::new));
 
-        Collections.shuffle(participants);
+        Collections.shuffle(participants, random);
 
         var pairList = new ArrayList<Pair<Participant, Participant>>();
 
@@ -27,17 +28,5 @@ public class Main {
         }
 
         outputStrategy.writeOutput(pairList);
-    }
-
-    private static boolean checkSelfOpponent(List<Participant> participants, ArrayList<Participant> opponents) {
-        for (int i = 0; i < participants.size(); i++) {
-            Participant participant = participants.get(i);
-            Participant opponent = opponents.get(i);
-
-            if (participant.name().equals(opponent.name())) {
-                return true;
-            }
-        }
-        return false;
     }
 }
