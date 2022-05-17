@@ -44,7 +44,7 @@ This is an example of how to list things you need to use the software and how to
 * configured ```mailerconfig.txt``` (if ```MailOutput``` should be used)
 
 For the configured ```*.txt``` files, check the corresponding ```TEMPLATE``` files. This should bring you on the right
-tracks and check [Configuration](#enterLinkHere).
+tracks and check [Configuration](#configuration-of-txt-files).
 
 ### Installation
 
@@ -52,7 +52,7 @@ tracks and check [Configuration](#enterLinkHere).
    ```sh
    git clone https://github.com/JoKrus/wichtel-matcher.git
    ```
-2. Configure the ```*.txt``` files (see in [Configuration](#enterLinkHere))
+2. Configure the ```*.txt``` files (see in [Configuration](#configuration-of-txt-files))
 3. Execute Maven project
    ```sh
    mvn clean compile exec:java
