@@ -7,6 +7,7 @@ import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
 
 import java.nio.charset.Charset;
+import java.util.Collections;
 import java.util.List;
 
 public class MailOutput implements OutputStrategy {
@@ -30,6 +31,11 @@ public class MailOutput implements OutputStrategy {
 
     @Override
     public void writeOutput(List<Pair<Participant, Participant>> matches) {
+        //Shuffle list of matches here again to obfuscate the order of matches since the algorithm now produces
+        //predictable matches based on the order of apperance
+
+        Collections.shuffle(matches);
+
         for (var match : matches) {
             var part = match.getLeft();
             var opponent = match.getRight();
