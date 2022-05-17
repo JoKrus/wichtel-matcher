@@ -1,1 +1,2 @@
 name;test@email.mail
+othername;othername@newmail.mail
